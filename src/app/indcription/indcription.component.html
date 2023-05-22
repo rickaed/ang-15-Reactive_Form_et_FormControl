@@ -1,0 +1,54 @@
+<h2>Inscription</h2>
+
+
+<form [formGroup]="inscription" (ngSubmit)="onSubmitForm()">
+  <div class="form-group">
+    <label for="userName">Username:</label>
+    <input id="userName" type="text" formControlName="userName">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input id="email" type="text" formControlName="email">
+
+  </div>
+  <div class="form-group">
+    <label for="password">Mot de passe:</label>
+    <input id="password" type="text" formControlName="password">
+  </div>
+  <!-- <div class="form-group">
+    <label for="verifPassword">Verification mot de passe:</label>
+    <input id="verifPassword" type="text" formControlName="verifPassword">
+  </div> -->
+  <fieldset formGroupName="adresse">
+    <legend>Adresse:</legend>
+  <div class="form-group">
+    <label for="num">num</label>
+    <input id="num" type="text" formControlName="num">
+  </div>
+  <div class="form-group">
+    <label for="rue">rue</label>
+    <input id="rue" type="text" formControlName="rue">
+  </div>
+  <div class="form-group">
+    <label for="codeP">Code postal</label>
+    <input id="codeP" type="text" formControlName="codeP">
+  </div>
+  <div class="form-group">
+    <label for="ville">Ville</label>
+    <input id="ville" type="text" formControlName="ville">
+  </div>
+</fieldset>
+
+<div class="action-buttons">
+  <button type="submit" [disabled]="!inscription.valid">Inscription</button>
+</div>
+</form>
+<div>
+  {{this.user.userName}} <br>
+  {{this.user.email}}<br>
+  {{this.user.password}}<br>
+  {{this.user.adresse.num}}<br>
+  {{this.user.adresse.rue}}<br>
+  {{this.user.adresse.codeP}}<br>
+  {{this.user.adresse.ville}}<br>
+</div>
