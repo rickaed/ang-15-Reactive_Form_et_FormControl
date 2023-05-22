@@ -1,13 +1,13 @@
-export class User {
-    userName!: string;
-    email!: string;
-    password!: string;
-    adresse!: {
-        num: number;
-        rue: string;
-        codeP: number;
-        ville: string;
-    };
-    
+import { FormControl, FormGroup } from "@angular/forms";
 
-}
+export interface User {
+    userName: any;
+    credential: {
+      email: any ;
+      password: any ;
+    };
+    num: any;
+    rue: any;
+    codeP: any;
+    ville: any;
+  }

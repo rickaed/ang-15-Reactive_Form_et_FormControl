@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user';
 import { NonNullAssert } from '@angular/compiler';
+import { IForm } from '../models/iform';
 
 @Component({
   selector: 'app-indcription',
@@ -9,25 +10,25 @@ import { NonNullAssert } from '@angular/compiler';
   styleUrls: ['./indcription.component.scss']
 })
 export class IndcriptionComponent {
-  
-  user!:any;
 
-  inscription = new FormGroup(
-    {
-      userName: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
-      email: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
-      password: new FormControl('', {nonNullable: true, validators: [Validators.required]}),
-      // verifPassword: new FormControl('', Validators.required),
-      adresse: new FormGroup({
-        num: new FormControl(0, {nonNullable: true, validators: [Validators.required]}),
-        rue: new FormControl('', {nonNullable: true, validators: [Validators.required]}),
-        codeP: new FormControl(0, {nonNullable: true, validators: [Validators.required]}),
-        ville: new FormControl('', {nonNullable: true, validators: [Validators.required]}),
-      })
-    }
-    )
-    
-    onSubmitForm() {
-this.user = this.inscription.value
-    }
+  user!: User;
+
+  userForm = new FormGroup({
+    userName: new FormControl('', [Validators.required]),
+    credential: new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+    }),
+    num: new FormControl(0, [Validators.required]),
+    rue: new FormControl('', [Validators.required]),
+    codeP: new FormControl(0, [Validators.required]),
+    ville: new FormControl('', [Validators.required]),
+  });
+
+  onSubmitForm() {
+    this.user = this.userForm.getRawValue();
+  }
+
+
+
 }
